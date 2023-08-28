@@ -3,5 +3,10 @@ services:
   app:
     build: .
     volumes:
-      - /Users/vasiliiparshkin/test/result:/data/output
-      - /Users/vasiliiparshkin/test/log/:/tmp/log
+      - medaware_result:/data/output
+      - medaware_logs:/tmp/log
+volumes:
+  medaware_result:
+    external: true
+  medaware_logs:
+    external: true
