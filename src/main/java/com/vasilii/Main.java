@@ -3,9 +3,11 @@ package com.vasilii;
 import com.vasilii.model.InputData;
 import com.vasilii.service.AnalyticService;
 import com.vasilii.service.DataService;
+import com.vasilii.service.impl.AnalyticServiceImpl;
+import com.vasilii.service.impl.DataServiceImpl;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,10 +17,10 @@ public class Main {
 
     public static void main(String[] args) {
         logger.log(Level.INFO, "Started test service");
-        AnalyticService analyticService = new AnalyticService();
-        DataService dataService = new DataService();
+        AnalyticService analyticService = new AnalyticServiceImpl();
+        DataService dataService = new DataServiceImpl();
 
-        List<InputData> inputData = dataService.getInputData();
+        Set<InputData> inputData = dataService.getInputData();
         try {
             analyticService.groupAndAnalyzeData(inputData);
         } catch (IOException e) {
