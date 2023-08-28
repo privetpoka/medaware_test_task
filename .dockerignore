@@ -3,3 +3,11 @@
 /out/**
 /gradle/**
 /**/venv/**
+### Mac OS ###
+.DS_Store
+/.gradle/
+/.idea/
+/build/
+/gradle/
+/src/main/resources/venv/
+/src/main/resources/.ipynb_checkpoints/
