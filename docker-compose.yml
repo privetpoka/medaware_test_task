@@ -1,0 +1,7 @@
+version: "3.9"
+services:
+  app:
+    build: .
+    volumes:
+      - /Users/vasiliiparshkin/test/result:/data/output
+      - /Users/vasiliiparshkin/test/log/:/tmp/log
