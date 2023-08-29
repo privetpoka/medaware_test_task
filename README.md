@@ -16,6 +16,9 @@ docker compose up
 ```
 The result of the program will appear in the mounted folder provided in PATH_TO_RES_FOLDER
 
+## Run project locally
+In order to run project locally please provide path to the output file via VM option like `-Dresult_path=/tmp/result.txt`
+
 ## Jupyter notebook
 Inside the project there is [jupyter notebook file](src/main/resources/noise_reduction.ipynb) 
 This file was created to remove the noise from [input file](src/main/resources/task1_input) 

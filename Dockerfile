@@ -11,4 +11,4 @@ COPY --from=build /home/gradle/src/build/libs/*.jar /app/test_task.jar
 COPY --from=build /home/gradle/src/src/main/resources/properties/docker_logging.properties /app/logging.properties
 
 #ENTRYPOINT ["java -Djava.util.logging.config.file=/home/gradle/src/resources/properties/docker_logging.properties ","-jar ", " /app/test_task.jar"]
-ENTRYPOINT ["java","-Djava.util.logging.config.file=/app/logging.properties", "-jar", "/app/test_task.jar"]
+ENTRYPOINT ["java","-Djava.util.logging.config.file=/app/logging.properties", "-Dresult_path=/data/output/result.txt", "-jar", "/app/test_task.jar"]
