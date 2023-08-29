@@ -3,16 +3,17 @@ package com.vasilii.service.impl;
 import com.vasilii.model.InputData;
 import com.vasilii.service.AnalyticService;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class AnalyticServiceImpl implements AnalyticService {
 
     private static final Logger logger = Logger.getLogger(AnalyticServiceImpl.class.getName());
+
 
     private Map<String, Set<InputData>> groupData(Set<InputData> inputData) {
 
@@ -49,12 +50,9 @@ public class AnalyticServiceImpl implements AnalyticService {
     }
 
     @Override
-    public void groupAndAnalyzeData(Set<InputData> inputDataList) throws IOException {
-        String result = analyzeData(groupData(inputDataList));
-        BufferedWriter writer = new BufferedWriter(new FileWriter("/data/output/result.txt"));
-        writer.write(result);
+    public String groupAndAnalyzeData(Set<InputData> inputDataList) {
+        return analyzeData(groupData(inputDataList));
 
-        writer.close();
 
     }
 

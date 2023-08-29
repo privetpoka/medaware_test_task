@@ -1,20 +1,14 @@
 package com.vasilii.service.impl;
 
+import com.vasilii.model.InputData;
 import com.vasilii.service.DataService;
 import lombok.NoArgsConstructor;
-import com.vasilii.model.InputData;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -25,33 +19,12 @@ public class DataServiceImpl implements DataService {
     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm:ss");
 
 
-    Logger logger = Logger.getLogger(DataServiceImpl.class.getName());
-
     @Override
-    public Set<InputData> getInputData() {
-        return getDataFromFile().stream().map(this::parseStringToInputData).collect(Collectors.toSet());
+    public Set<InputData> getInputData(List<String> dataFromFile) {
+        return dataFromFile.stream().map(this::parseStringToInputData).collect(Collectors.toSet());
 
     }
 
-    private List<String> getDataFromFile() {
-        logger.log(Level.INFO, "fetching data from file");
-        Class<?> clazz = DataServiceImpl.class;
-        InputStream inputStream = clazz.getResourceAsStream("/task1_output.txt");
-        return readFromInputStream(inputStream);
-    }
-
-    private List<String> readFromInputStream(InputStream inputStream) {
-        List<String> res = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                res.add(line);
-            }
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, "Fail to open file", e);
-        }
-        return res;
-    }
 
 
     private InputData parseStringToInputData(String input) {

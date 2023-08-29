@@ -6,5 +6,5 @@ import java.io.IOException;
 import java.util.Set;
 
 public interface AnalyticService {
-    void groupAndAnalyzeData(Set<InputData> inputDataList) throws IOException;
+    String groupAndAnalyzeData(Set<InputData> inputDataList);
 }
